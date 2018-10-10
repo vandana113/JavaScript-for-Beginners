@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<title>Shift Box</title>
+		<style>
+			div.d00
+			{
+				border: 25px solid purple;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="d00" id="d01" style="width:350px;height:550px;background:pink;">
+		<div id="d02" style="width:25px;height:25px;background:red;top:25px;left:25px;position:relative;"> 
+		</div>
+	</div>
+	<form>
+		<table>
+			<tr >
+				<td><input type="button" value="  up " onclick="Up()"></td>
+				<td><input type="button" value="down " onclick="Down()"></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="left " onclick="Left()"></td>
+				<td><input type="button" value="right" onclick="Right()"></td>
+			</tr>
+		</table>  
+	</form>
+	<script>
+		var id1;
+		var idu;
+		var idr;
+		var idd;
+		function Left()
+		{
+			idl = setInterval(function(){moveLeft();},50);
+		}
+		function Right()
+		{
+			idr = setInterval(function(){moveRight();},50);
+		}
+		function Up()
+		{
+			idu = setInterval(function(){moveUp();},50);
+		}
+		function Down()
+		{
+			idd = setInterval(function(){moveDown();},50);
+		}
+		function moveLeft()
+		{
+			var element = document.getElementById("d02");
+			if(parseInt(element.style.left)>25)
+			{
+				element.style.left = (parseInt(element.style.left) - 20) +"px";
+			}
+			else
+			{
+				clearInterval(idl);
+			}
+		}
+		function moveRight()
+		{
+			var element = document.getElementById("d02");
+			var e2 = document.getElementById("d01");
+			if(parseInt(element.style.left)<parseInt(e2.style.width)-45)
+			{
+				element.style.left = (20 + parseInt(element.style.left)) +"px";
+			}
+			else
+			{
+				clearInterval(idr);
+			}
+		}
+		function moveUp()
+		{
+			var element = document.getElementById("d02");
+			if(parseInt(element.style.top)>25)
+			{
+				element.style.top = ( parseInt(element.style.top) - 20) +"px";
+			}
+			else
+			{
+				clearInterval(idu);
+			}
+		}
+		function moveDown()
+		{
+			var element = document.getElementById("d02");
+			var e2 = document.getElementById("d01");
+			if(parseInt(element.style.top)<parseInt(e2.style.height)-45)
+			{
+				element.style.top = (20 + parseInt(element.style.top)) +"px";
+			}
+			else
+			{
+				clearInterval(idd);
+			}
+		}
+	</script>
+	</body>
+</html>
